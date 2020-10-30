@@ -15,7 +15,7 @@ class Router
     }
 
     //Проверка на существование маршрута
-    public function match() 
+    private function match() 
     {
         $routes = require_once 'configs\routes.php';
         $url = trim($_SERVER['REQUEST_URI'], '/');
