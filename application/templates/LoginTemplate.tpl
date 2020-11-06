@@ -4,5 +4,5 @@
 
         <p>Введите пароль:<br> <input type = 'password' name = 'password' value = <?=$_REQUEST['password']?>></p>
 
-        <p><input type = 'submit' name = 'submit'></p>
+        <p><input type = 'submit'></p>
 </form>

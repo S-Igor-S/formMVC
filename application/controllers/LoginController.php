@@ -10,6 +10,7 @@ class LoginController extends MainController
         $login = new LoginModel;
         $login->userInformation();
         $this->mainAction();
+        
         print_r("<p><a href='http://formmvc/'>Вернуться на главную страницу</a></p>");
     }
 }

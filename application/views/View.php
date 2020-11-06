@@ -1,8 +1,4 @@
 <?php
-// require_once __DIR__.'\..\templates\HeaderTemplate.php';
-// require_once __DIR__.'\..\templates\FormTemplate.php';
-// require_once __DIR__.'\..\templates\FooterTemplate.php';
-// echo $_SERVER['REQUEST_URI'];
 namespace views;
 
 use controllers\Error404Controller;

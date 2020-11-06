@@ -20,12 +20,12 @@ class UserModel
         {
             if ($request['login'] == $results['name'])
             {
-                print_r("Такой логин уже существует<br>");
+                print_r("<b>Такой логин уже существует</b><br>");
                 break;
             }
             if ($request['email'] == $results['email'])
             {
-                print_r("Аккаунт с такой почтой уже существует<br>");
+                print_r("<b>Аккаунт с такой почтой уже существует</b><br>");
                 break;
             }
             $results = $stmt->fetch(PDO::FETCH_BOTH);

@@ -18,12 +18,12 @@ class MailHandler
         }
         $title = "Форма";
         ob_start();
-        require_once TEMPLATES_PATH."MailTemplate.php";
+        require_once TEMPLATES_PATH."MailTemplate.tpl";
         $body = ob_get_contents();
         ob_end_clean();
         return array('file' => $file, 'title' => $title, 'body' => $body);
     }
-    public function sendMail($username = '', $password = '')
+    public function sendMail($username = 'nixphpcms@gmail.com', $password = 'Qwerty_12345678')
     {
         $content_mail = $this->contentMail();
         $mail = new PHPMailer();

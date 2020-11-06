@@ -29,13 +29,13 @@ class LoginModel
     }
     public function userInformation()
     {
-        if ($this->loginCheck())
+        if ($this->loginCheck() && !empty($_REQUEST))
         {
             
-            print_r('Доступ разрешен');
-        }else
+            print_r('<b>Доступ разрешен</b>');
+        }elseif (!empty($_REQUEST))
         {
-            print_r('Доступ запрещён');
+            print_r('<b>Доступ запрещён</b>');
         }
     }
 }
