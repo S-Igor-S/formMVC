@@ -5,16 +5,18 @@
 // echo $_SERVER['REQUEST_URI'];
 namespace views;
 
+use controllers\Error404Controller;
 class View
 {
     public function templateView($template)
     {
-        $content = $template."Template.php";
+        $content = $template."Template.tpl";
         if(file_exists(TEMPLATES_PATH."\\".$content)){
-            require_once TEMPLATES_PATH."Default.php";
+            require_once TEMPLATES_PATH."Default.tpl";
         } else
         {
-            require_once VIEW_PATH.'\\Error404.php';
+            $error404 = new Error404Controller('error404');
+            $error404->errorAction();
         }
     }
 }
