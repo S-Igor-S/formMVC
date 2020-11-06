@@ -1,7 +1,8 @@
 <?php
 // namespace application\controllers;
 
-use views\Error404;
+use controllers\Error404;
+use controllers\Error404Controller;
 
 class Router
 {
@@ -57,11 +58,15 @@ class Router
                 //$controller->template = $this->params['controller'];
             } else 
             {
-                Error404::errorAction();
+                //Error404Controller::errorAction();
+                $error404 = new Error404Controller;
+                $error404->errorAction('error404');
             }
         } else 
         {
-            Error404::errorAction();
+            //Error404Controller::errorAction();
+            $error404 = new Error404Controller('error404');
+            $error404->errorAction();
         }
     }
 }

@@ -17,5 +17,8 @@ return [
         'controller' => 'books',
         // 'template' => 'Action',
     ],
+    'error404' => [
+        'controller' => 'error404',
+    ]
     
 ];
