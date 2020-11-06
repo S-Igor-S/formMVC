@@ -6,6 +6,7 @@
     <b>Дата рождения:</b><?=$_REQUEST['date']?><br>
     <b>Email:</b><?=$_REQUEST['email']?><br>
     <b>Телефон:</b><?=$_REQUEST['tel']?><br>
+    <b>Пол:</b><?=$_REQUEST['gender']?><br>
     <b>Знание языков программирования:</b><?=implode(', ' , $_REQUEST['lang'])?><br>
     <b>Любимый язык программирования:</b><?=$_REQUEST['favLang']?><br>
 </body>

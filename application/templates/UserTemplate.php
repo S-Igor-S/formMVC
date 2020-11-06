@@ -17,23 +17,21 @@
 
         <p>Возраст: <input name = 'age' value = <?=$_REQUEST['age']; ?>> Допустимые символы: [0-9], Не больше 3 символов, 9 < Возраст < 128</p>
 
-        <p>Дата рождения: <input type = 'date' name = 'date' value = <?=$_REQUEST['date']; ?> ></p>
-
         <p>Email: <input type = 'email' name = 'email' value = <?=$_REQUEST['email']; ?>> Допустимые символы: [A-Z, a-z, 0-9, _, @, .]</p>
 
         <p>Номер телефона: <input type = 'tel' name = 'tel' value = <?=$_REQUEST['tel']; ?>> Допустимые символы: [0-9, +], Номер телефона без кода страны должен составлять 10 символов</p>
         
         <p>
             Пол:<br>
-            <?php if ($_REQUEST['gender'] == 'female') { ?>
-                <label><input type = 'radio' name = 'gender' value = 'male'>Male</label><br> 
-                <label><input type = 'radio' name = 'gender' value = 'female' checked>Female</label>
-            <?php } else if ($_REQUEST['gender'] == 'male') { ?>
-                <label><input type = 'radio' name = 'gender' value = 'male' checked>Male</label><br> 
-                <label><input type = 'radio' name = 'gender' value = 'female'>Female</label>
+            <?php if ($_REQUEST['gender'] == 'F') { ?>
+                <label><input type = 'radio' name = 'gender' value = 'M'>Male</label><br> 
+                <label><input type = 'radio' name = 'gender' value = 'F' checked>Female</label>
+            <?php } else if ($_REQUEST['gender'] == 'M') { ?>
+                <label><input type = 'radio' name = 'gender' value = 'M' checked>Male</label><br> 
+                <label><input type = 'radio' name = 'gender' value = 'F'>Female</label>
             <?php } else { ?>
-                <label><input type = 'radio' name = 'gender' value = 'male'>Male</label><br> 
-                <label><input type = 'radio' name = 'gender' value = 'female'>Female</label>
+                <label><input type = 'radio' name = 'gender' value = 'M'>Male</label><br> 
+                <label><input type = 'radio' name = 'gender' value = 'F'>Female</label>
             <?php } ?>    
         </p>
 
@@ -72,7 +70,7 @@
 
         </p>
 
-        <p>File: <input type = 'file' name = 'file'></p>
+        <!-- <p>File: <input type = 'file' name = 'file'></p> -->
 
         <p>
             Выберите любимый язык программирования:<br>

@@ -9,12 +9,12 @@ return [
         'controller' => 'user',
         // 'template' => 'Registration',
     ],
-    'authorization' => [
-        'controller' => 'authorization',
+    'login' => [
+        'controller' => 'login',
         // 'template' => 'Authorization',
     ],
-    'check' => [
-        'controller' => 'check',
+    'books' => [
+        'controller' => 'books',
         // 'template' => 'Action',
     ],
     

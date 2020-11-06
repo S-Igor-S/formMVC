@@ -13,7 +13,8 @@ class MainController
     }
     public function mainAction()
     {
-        $view = new View($this->template);
+        $view = new View();
+        $view->templateView($this->template);
     }
 }
 ?>

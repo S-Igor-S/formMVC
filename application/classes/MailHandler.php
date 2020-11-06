@@ -23,7 +23,7 @@ class MailHandler
         ob_end_clean();
         return array('file' => $file, 'title' => $title, 'body' => $body);
     }
-    public function sendMail($username = 'nixphpcms@gmail.com')
+    public function sendMail($username = 'ihor.prachuk@gmail.com', $password = 'fdnjcnhflf60')
     {
         $content_mail = $this->contentMail();
         $mail = new PHPMailer();
@@ -38,7 +38,7 @@ class MailHandler
             // Настройки вашей почты
             $mail->Host = 'smtp.gmail.com'; // SMTP сервера вашей почты
             $mail->Username = $username; // Логин на почте
-            $mail->Password = ''; // Пароль на почте
+            $mail->Password = $password; // Пароль на почте
             $mail->SMTPSecure = 'ssl';
             $mail->Port = 465;
             $mail->setFrom($username, 'User'); // Адрес самой почты и имя отправителя
@@ -57,7 +57,7 @@ class MailHandler
             $mail->Subject = $content_mail['title'];
             $mail->Body = $content_mail['body'];    
             // Проверяем отравленность сообщения
-            if ($mail->send()) {/*$result = "success";*/ echo "<p>Сообщение отправлено на почту</p>";} 
+            if ($mail->send()) {/*$result = "success";*/ echo "<p>Сообщение отправлено на почту</p><br>";} 
             else {/*$result = "error";*/ echo "<p>Сообщение не было отправлено на почту</p>";}
 
         } 
