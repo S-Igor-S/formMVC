@@ -15,7 +15,7 @@ class BooksModel
         $pdo = new PDO($dsn, 'root', 'root', $options);
         $stmt = $pdo->query("SELECT * FROM `genre`");
         $results_genre = $stmt->fetch(PDO::FETCH_BOTH);
-        while(!empty($results_genre) && !empty($request))
+        while(!empty($results_genre) && !empty($request['genre']))
         {
             if (in_array($results_genre['name'], $request['genre']))
             {
@@ -28,7 +28,7 @@ class BooksModel
         }
         $stmt = $pdo->query("SELECT * FROM `century`");
         $results_century = $stmt->fetch(PDO::FETCH_BOTH);
-        while(!empty($results_century) && !empty($request))
+        while(!empty($results_century) && !empty($request['century']))
         {
             if (in_array($results_century['century'], $request['century']))
             {

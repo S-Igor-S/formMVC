@@ -23,7 +23,7 @@ class MailHandler
         ob_end_clean();
         return array('file' => $file, 'title' => $title, 'body' => $body);
     }
-    public function sendMail($username = 'ihor.prachuk@gmail.com', $password = 'fdnjcnhflf60')
+    public function sendMail($username = '', $password = '')
     {
         $content_mail = $this->contentMail();
         $mail = new PHPMailer();

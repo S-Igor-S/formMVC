@@ -10,7 +10,7 @@
     <label><input type = 'checkbox' name = 'genre[]' value = 'detective'>Детективы</label>
     <label><input type = 'checkbox' name = 'genre[]' value = 'adventure'>Приключения</label>
     <label><input type = 'checkbox' name = 'genre[]' value = 'fantasy'>Фантастика</label>
-    <p><input type = 'submit' name = 'submit'></p>
+    <p><input type = 'submit'></p>
 </form>
 <!-- <p>Фильтр по временному промежутку</p>
 <form method = 'POST', action = ''>
