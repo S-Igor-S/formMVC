@@ -15,7 +15,9 @@ class BooksModel
         $sqlQuery .= " WHERE ";
         foreach ($_REQUEST as $filter => $value)
         {
-            $sqlQuery = $sqlQuery.$filter.".value = \"".$value."\" && ";
+            $strValue = implode($value);
+            // $sqlQuery = $sqlQuery.$filter.".value = \"%".$strValue."%\" && ";
+            $sqlQuery = $sqlQuery."POSITION(".$filter.".value IN \"".$strValue."\") && ";
         }
         $sqlQuery = substr($sqlQuery, 0, -3);
         return $sqlQuery;
