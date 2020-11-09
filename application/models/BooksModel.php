@@ -5,7 +5,22 @@ use PDO;
 
 class BooksModel
 {
-    public function categoriesCheck($request)
+    private function sqlQuery()
+    {
+        $sqlQuery = "SELECT books.Name, books.Author FROM books";
+        foreach ($_REQUEST as $filter => $value)
+        {
+            $sqlQuery = $sqlQuery." LEFT JOIN ".$filter." ON ".$filter.".id = books.".$filter."_id";
+        }
+        $sqlQuery .= " WHERE ";
+        foreach ($_REQUEST as $filter => $value)
+        {
+            $sqlQuery = $sqlQuery.$filter.".value = \"".$value."\" && ";
+        }
+        $sqlQuery = substr($sqlQuery, 0, -3);
+        return $sqlQuery;
+    }
+    public function categoriesCheck()
     {
         $dsn = "mysql:host=localhost;port=3306;dbname=books_directory;charset=utf8";
         $options = [
@@ -13,33 +28,18 @@ class BooksModel
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ];
         $pdo = new PDO($dsn, 'root', 'root', $options);
-        $stmt = $pdo->query("SELECT * FROM `genre`");
-        $results_genre = $stmt->fetch(PDO::FETCH_BOTH);
-        while(!empty($results_genre) && !empty($request['genre']))
+        if (empty($_REQUEST))
         {
-            if (in_array($results_genre['name'], $request['genre']))
+            print_r("<b>Выберите хотя бы одну категорию</b><br>");
+        } else
+        {
+            $stmt_books = $pdo->query($this->sqlQuery());
+            $books = $stmt_books->fetchAll(PDO::FETCH_BOTH);
+            foreach ($books as $book)
             {
-                // print_r($results_genre['name']."<br>");
-                $stmt_books = $pdo->query("SELECT `books`.`Name`, `books`.`Author` FROM `books` LEFT JOIN genre ON `genre`.`id` = `books`.`Genre_id` LEFT JOIN century ON `century`.`id` = `books`.`Century_id` GROUP BY `books`.`id`;");
-                $results_books = $stmt_books->fetch(PDO::FETCH_BOTH);
-                print_r($results_books);
+                print_r($book['Name']."<br>  Писатель: ".$book['Author']);
+                echo "<br><br>";
             }
-            $results_genre = $stmt->fetch(PDO::FETCH_BOTH);
-        }
-        $stmt = $pdo->query("SELECT * FROM `century`");
-        $results_century = $stmt->fetch(PDO::FETCH_BOTH);
-        while(!empty($results_century) && !empty($request['century']))
-        {
-            if (in_array($results_century['century'], $request['century']))
-            {
-                // print_r($results_century['century']);
-
-            }
-            $results_century = $stmt->fetch(PDO::FETCH_BOTH);
-        }
-        if (empty($request))
-        {
-            print_r("Выберите хотя бы одну категорию<br>");
         }
     }
 }

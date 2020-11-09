@@ -9,7 +9,7 @@ class BooksController extends MainController
     {
         $this->mainAction();
         $books = new BooksModel;
-        $books->categoriesCheck($_REQUEST);
+        $books->categoriesCheck();
     }
 }
 ?>

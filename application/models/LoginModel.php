@@ -29,9 +29,8 @@ class LoginModel
     }
     public function userInformation()
     {
-        if ($this->loginCheck() && !empty($_REQUEST))
+        if ($this->loginCheck())
         {
-            
             print_r('<b>Доступ разрешен</b>');
         }elseif (!empty($_REQUEST))
         {
