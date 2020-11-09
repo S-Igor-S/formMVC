@@ -3,7 +3,7 @@ namespace models;
 
 use PDO;
 
-class BooksModel
+class BooksModel extends MainModel
 {
     private function sqlQuery()
     {
@@ -16,7 +16,6 @@ class BooksModel
         foreach ($_REQUEST as $filter => $value)
         {
             $strValue = implode($value);
-            // $sqlQuery = $sqlQuery.$filter.".value = \"%".$strValue."%\" && ";
             $sqlQuery = $sqlQuery."POSITION(".$filter.".value IN \"".$strValue."\") && ";
         }
         $sqlQuery = substr($sqlQuery, 0, -3);
@@ -24,12 +23,7 @@ class BooksModel
     }
     public function categoriesCheck()
     {
-        $dsn = "mysql:host=localhost;port=3306;dbname=books_directory;charset=utf8";
-        $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ];
-        $pdo = new PDO($dsn, 'root', 'root', $options);
+        $pdo = new PDO($this->dsn, 'root', 'root', $this->options);
         if (empty($_REQUEST))
         {
             print_r("<b>Выберите хотя бы одну категорию</b><br>");

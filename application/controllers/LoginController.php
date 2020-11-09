@@ -7,7 +7,7 @@ class LoginController extends MainController
 {
     function loginAction()
     {
-        $login = new LoginModel;
+        $login = new LoginModel('dbase_formmvc');
         $login->userInformation();
         $this->mainAction();
         

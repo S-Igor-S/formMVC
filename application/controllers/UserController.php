@@ -16,7 +16,7 @@ class UserController extends MainController
         $formHandler->setCookie();
         if (empty($formHandler->errors) && !empty($_REQUEST))
         {
-            $userModel = new UserModel;
+            $userModel = new UserModel('dbase_formmvc');
             $userModel->userInsert($_REQUEST);
             if($userModel->check == true)
             {
