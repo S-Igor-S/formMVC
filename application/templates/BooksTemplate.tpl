@@ -1,4 +1,3 @@
-
 <form method = 'POST', action = ''>
     <p><b>Фильтр по временному промежутку</b></p>
     <label><input type = 'checkbox' name = 'century[]' value = 18>18 век</label>

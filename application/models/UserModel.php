@@ -26,7 +26,17 @@ class UserModel extends MainModel
         }
         if(empty($results))
         {
-            $stmt = $pdo->query("INSERT user_accounts(name, password, age, email, tel, gender, lang, fav_lang) VALUES('{$request['login']}','{$request['password']}', {$request['age']}, '{$request['email']}', '{$request['tel']}', '{$request['gender']}', '{$request['lang']}', '{$request['favLang']}');");
+            // $stmt = $pdo->query("INSERT user_accounts(name, password, age, email, tel, gender, lang, fav_lang) VALUES('{$request['login']}','{$request['password']}', {$request['age']}, '{$request['email']}', '{$request['tel']}', '{$request['gender']}', '{$request['lang']}', '{$request['favLang']}');");
+            $stmt = $pdo->prepare("INSERT user_accounts(name, password, age, email, tel, gender, lang, fav_lang) VALUES(:login, :password, :age, :email, :tel, :gender, :lang, :favLang);");
+            $stmt->bindParam(':login', $_REQUEST['login'], PDO::PARAM_STR);
+            $stmt->bindParam(':password', $_REQUEST['password'], PDO::PARAM_STR);
+            $stmt->bindParam(':age', $_REQUEST['age'], PDO::PARAM_INT, 3);
+            $stmt->bindParam(':email', $_REQUEST['email'], PDO::PARAM_STR);
+            $stmt->bindParam(':tel', $_REQUEST['tel'], PDO::PARAM_STR);
+            $stmt->bindParam(':gender', $_REQUEST['gender'], PDO::PARAM_STR);
+            $stmt->bindParam(':lang', implode(', ', $_REQUEST['lang']), PDO::PARAM_STR);
+            $stmt->bindParam(':favLang', $_REQUEST['favLang'], PDO::PARAM_STR);
+            $stmt->execute();
         }
         
     }

@@ -1,14 +1,3 @@
-<?php
-// $continue = 'yes';
-// if(!empty($_COOKIE))
-// {
-// ?>
-<!-- // <p>Вы уже заполняли ранее форму регистрации, хотите продолжить?</p>
-// <p><button name = 'continue' value = 'yes'>Да</button> <button name = 'continue' value = 'no'>Нет</button></p> -->
-<?php
-//} else
-//{
-?>
     <form enctype='multipart/form-data'  action = '' method = 'POST'>
 
         <p>Логин: <input name = 'login' value = <?=$_REQUEST['login'];?>> Допустимые символы: [A-Z, a-z, 0-9, _], Первый символ: заглавная буква</p>
@@ -83,8 +72,5 @@
                 <option>Java</option>
             </datalist>
         </p>
-        <p><input type = 'submit' name = 'submit'></p>
+        <p><input type = 'submit'></p>
     </form>
-<?php    
-//}
-?>
